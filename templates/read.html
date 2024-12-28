@@ -1,0 +1,43 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+        <table class="table table-hover table-dark ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Details</th>
+      <th scope="col">Date</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for todo in data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{todo.subject}}</td>
+        <td>{{todo.details}}</td>
+        <td>{{todo.date}}</td>
+      <td>
+
+        <a class="btn btn-primary" href="{% url 'delete_data' todo.id %}" role="button">Delete</a>
+      </td>
+
+      <td>
+
+        <a class="btn btn-primary" href="{% url 'update_data' todo.id %}" role="button">Edit</a>
+      </td>
+
+    </tr>
+
+
+
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
